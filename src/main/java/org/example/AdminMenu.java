@@ -17,10 +17,10 @@ public class AdminMenu {
     private final String ADMIN_PASSWORD;
 
     // staff list
-    private List<Handlers> handlers = new ArrayList<>();
-    private List<Managers> managers = new ArrayList<>();
-    private List<Vendors>  vendors = new ArrayList<>();
-    private List<Veterinarians> veterinarians = new ArrayList<>();
+    private final List<Handlers> handlers = new ArrayList<>();
+    private final List<Managers> managers = new ArrayList<>();
+    private final List<Vendors>  vendors = new ArrayList<>();
+    private final List<Veterinarians> veterinarians = new ArrayList<>();
 
 
     public AdminMenu(Scanner scanner) {
@@ -74,6 +74,7 @@ public class AdminMenu {
                         staffSetupMenu();
                         break;
                     case 2:
+                        handlerMenu();
                         break;
                     case 3:
                         openZoo();
@@ -122,7 +123,7 @@ public class AdminMenu {
 
         while(true){
             System.out.println("\n----- Setup Zoo Staff -----");
-            System.out.println("1. Add Manager \n2. Add Handler \n3. Add Vendor \n4. Add Veterinarian \n5. View Existing Staff  \n6. Back to Main Menu");
+            System.out.println("1. Add Manager \n2. Add Handler \n3. Add Vendor \n4. Add Veterinarian \n5. View Existing Staff  \n6. Return to Admin Menu");
             System.out.print("Choose a Staff to Add: ");
 
             int choice;
@@ -174,7 +175,6 @@ public class AdminMenu {
 
     }
 
-
     // helper method to print existing staff
     private void getStaff(){
         System.out.println("\n----- Existing Zoo Staff -----");
@@ -194,8 +194,38 @@ public class AdminMenu {
     }
 
 
+    private void handlerMenu(){
 
 
+        while(true){
+            System.out.println("\n----- Handler Main Menu ------");
+            System.out.println("1. List Handler Assignments \n2. Assign Animal to Handler \n3. Handler Actions \n4. Return to Admin Menu");
+            System.out.println("Choose an Option: ");
+
+            int choice;
+
+            try{
+                choice = Integer.parseInt(scanner.nextLine());
+
+                switch(choice){
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        System.out.println("----- Going Back to Admin Menu! -----");
+                        return;
+                }
+
+            } catch (NumberFormatException e) {
+                System.out.println("> [ERR: Invalid Choice Input]");
+            }
+
+        }
+
+    }
 
 
 }
