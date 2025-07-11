@@ -25,7 +25,6 @@ public class ZooVisitor {
     public void visitEnclosure(Scanner scanner) {
         System.out.println("===Zoo Enclosure===");
         System.out.println("Choose Enclosure:");
-
         for (int i = 0; i < enclosures.size(); i++) {
             System.out.println((i + 1) + ". " + enclosures.get(i));
         }
@@ -42,6 +41,7 @@ public class ZooVisitor {
         String animal;
         String animalSound;
 
+        // TODO: Implement makeSound() for each of the animals
         switch(option) {
             case 1:
                 animal = "Elephant";
