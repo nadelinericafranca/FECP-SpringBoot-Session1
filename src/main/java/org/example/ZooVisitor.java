@@ -11,7 +11,15 @@ public class ZooVisitor {
 
     public ZooVisitor (Scanner scanner) {
         this.scanner = scanner; // Initialize with the shared scanner
-        // TODO: Initialize enclosure ?
+        this.enclosures = new ArrayList<Enclosures>();
+
+        Enclosures pachydermEnclosure = new Enclosures("Pachyderm", "Elephant");
+        Enclosures felineEnclosure = new Enclosures("Feline", "Tiger");
+        Enclosures birdEnclosure = new Enclosures("Bird", "Owl");
+
+        this.enclosures.add(pachydermEnclosure);
+        this.enclosures.add(felineEnclosure);
+        this.enclosures.add(birdEnclosure);
     }
 
     public void visitEnclosure(Scanner scanner) {
