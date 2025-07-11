@@ -25,10 +25,10 @@ public class ZooVisitor {
     public void visitEnclosure(Scanner scanner) {
         System.out.println("===Zoo Enclosure===");
         System.out.println("Choose Enclosure:");
-        // TODO: use forEach to print list of enclosures
-        System.out.println("1. Pachyderm (Elephant)");
-        System.out.println("2. Feline (Lion)");
-        System.out.println("3. Bird (Owl)");
+
+        for (int i = 0; i < enclosures.size(); i++) {
+            System.out.println((i + 1) + ". " + enclosures.get(i));
+        }
         System.out.print("Choose an option: ");
 
         int option;

@@ -16,4 +16,9 @@ public class Enclosures extends Buildings {
     public String getAnimal() {
         return animal;
     }
+
+    @Override
+    public String toString() {
+        return species + " (" + animal + ")";
+    }
 }
