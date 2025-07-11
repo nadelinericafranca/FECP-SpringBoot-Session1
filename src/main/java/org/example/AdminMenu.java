@@ -49,7 +49,7 @@ public class AdminMenu {
                         System.out.println("Returning to main menu...\n");
                         return;
                     default:
-                        System.out.println("Invalid input.  Please choose from the menu.\n");
+                        System.out.println("Invalid input. Please choose from the menu.\n");
                         break;
                 }
             } catch (NumberFormatException e) {

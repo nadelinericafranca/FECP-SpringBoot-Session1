@@ -44,11 +44,11 @@ public class Main {
                         System.out.println("--- Thank you! ---");
                         System.exit(0);
                     default:
-                        System.out.println("Invalid option. Please choose from the menu.\n");
+                        System.out.println("Invalid input. Please choose from the menu.\n");
                         break;
                 }
             } catch (NumberFormatException e) {
-                System.out.println("Invalid option. Please choose from the menu.\n");
+                System.out.println("Invalid input. Please choose from the menu.\n");
             }
         }
     }

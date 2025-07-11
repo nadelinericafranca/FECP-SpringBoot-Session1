@@ -35,7 +35,7 @@ public class TicketingSystem {
                 System.out.println("No problem! Feel free to visit us again soon.\n");
                 break;
             } else {
-                System.out.println("Invalid answer. Please enter 'yes' or 'no'.");
+                System.out.println("Invalid input. Please enter 'yes' or 'no'.");
             }
         }
     }
