@@ -61,8 +61,10 @@ public class AdminMenu {
                     case 2:
                         break;
                     case 3:
+                        openZoo();
                         break;
                     case 4:
+                        closeZoo();
                         break;
                     case 5:
                         System.out.println("Returning to main menu...\n");
@@ -76,4 +78,31 @@ public class AdminMenu {
             }
         }
     }
+
+    // open zoo method
+    private static void openZoo(){
+        if(zooState){
+            System.out.println("> Zoo is already OPEN to visitors.");
+        }else{
+            zooState = true;
+            System.out.println("----- Opening the Zoo -----");
+            System.out.println("> Zoo is now OPEN to visitors!");
+        }
+    }
+
+    // close zoo method
+    private static void closeZoo(){
+        if(zooState){
+            zooState = false;
+            System.out.println("------ Closing the Zoo -----");
+            System.out.println("> Zoo is now CLOSED to visitors.");
+        }else{
+            System.out.println("> Zoo is already CLOSED to visitors.");
+        }
+    }
+
+
+
+
+
 }
