@@ -3,25 +3,44 @@ package org.example;
 import java.util.*;
 
 public class AdminMenu {
+
     private final Scanner scanner;
+    private static boolean zooState = false;
+    private final String ADMIN_USERNAME;
+    private final String ADMIN_PASSWORD;
 
     public AdminMenu(Scanner scanner) {
-        this.scanner = scanner; // Initialize with the shared scanner
+        this.scanner = scanner;
+        this.ADMIN_USERNAME = "admin";
+        this.ADMIN_PASSWORD = "password123";
+    }
+
+    // method for other modules to check zooState
+    public static boolean isZooOpen(){
+        return zooState;
     }
 
     public void displayMenu() {
-        System.out.println("=== Welcome to the Zoo Admin Console ===\n");
-        System.out.println("Please log in.");
 
-        System.out.print("Enter username: ");
-        String username = scanner.nextLine();
+        boolean loggedIn = false;
 
-        System.out.print("Enter password: ");
-        String password = scanner.nextLine();
+        System.out.println("=== Welcome to the Zoo Admin Console ===");
 
-        // Implement checking of admin credentials here
+        while(!loggedIn) {
+            System.out.print("Enter username: ");
+            String username = scanner.nextLine();
 
-        System.out.println("\nLogin successful. Welcome!");
+            System.out.print("Enter password: ");
+            String password = scanner.nextLine();
+
+            if(username.equals(ADMIN_USERNAME) && password.equals(ADMIN_PASSWORD)){
+                loggedIn = true;
+                System.out.println("> [Login Successful! Welcome!]");
+            }else{
+                System.out.println("> [ERR: Incorrect credentials. Please try again.]\n");
+            }
+
+        }
 
         while (true) {
             System.out.println("\n========== 🦁 ZOO ADMIN MAIN MENU ==========");
