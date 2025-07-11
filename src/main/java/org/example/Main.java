@@ -37,6 +37,7 @@ public class Main {
                         ticketingSystem.displayMenu();
                         break;
                     case 3:
+                        // TODO: Implement open/closing
                         ZooVisitor zooVisitor = new ZooVisitor(scanner);
                         zooVisitor.displayMenu();
                         break;
