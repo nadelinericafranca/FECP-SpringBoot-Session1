@@ -2,8 +2,11 @@ package org.example;
 
 import org.example.animals.Animal;
 import org.example.buildings.Hospital;
+import org.example.buildings.Product;
+import org.example.buildings.Shops;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class ZooVisitor {
     private final Scanner scanner;
@@ -52,20 +55,8 @@ public class ZooVisitor {
     }
 
     public void visitShop() {
-        while (true) {
-            System.out.println("=== 🛒 Zoo Shop ===");
-            System.out.println("Available Products: ");
-
-            System.out.print("Enter the numbers of the items you want to buy: ");
-
-            try {
-                int itemNumber = Integer.parseInt(scanner.nextLine());
-
-                break;
-            } catch (NumberFormatException e) {
-                System.out.println("Item number must be an integer.\n");
-            }
-        }
+        Shops shop = new Shops();
+        shop.startShopping(scanner);
     }
 
     public void visitHospital() {
