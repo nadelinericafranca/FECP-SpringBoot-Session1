@@ -35,7 +35,7 @@ public class Hospital extends Buildings {
         healedAnimals.add(animal);
 
         System.out.println("✅ Healed: " + animal.getName());
-        System.out.println(animal.getName() + "has been discharged and returned to enclosure");
+        System.out.println(animal.getName() + " has been discharged and returned to enclosure");
     }
 
     public void displaySickAnimals() {

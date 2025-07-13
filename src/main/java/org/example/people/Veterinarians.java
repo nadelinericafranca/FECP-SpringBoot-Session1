@@ -23,11 +23,9 @@ public class Veterinarians extends People {
         System.out.println("Dr. " + name + " begins healing sick animals...");
         animal.setHealthy(true);
         animal.setHealingTimestamp(LocalDateTime.now()); // Set timestamp
-        System.out.println("✅ Healed: " + animal.getName());
-        System.out.println(animal.getName() + " has been discharged and returned to enclosure.");
     }
 
     public void lecture() {
-        System.out.println("Dr. " + name + "gives a science lecture on animal health and conservation.");
+        System.out.println("Dr. " + name + " gives a science lecture on animal health and conservation.\n");
     }
 }
