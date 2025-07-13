@@ -96,7 +96,7 @@ public class ZooVisitor {
             System.out.println("1. View Sick Animals");
             System.out.println("2. View Healed Animals");
             System.out.println("3. Attend Science Lecture");
-            System.out.println("4. Heal Animals (Veterinarian");
+            System.out.println("4. Heal Animals (Veterinarian)");
             System.out.println("5. Exit");
 
             System.out.print("Choose an option: ");
@@ -107,10 +107,10 @@ public class ZooVisitor {
 
                 switch (option) {
                     case 1:
-
+                        hospital.displaySickAnimals();
                         break;
                     case 2:
-
+                        hospital.displayHealedAnimals();
                         break;
                     case 3:
                         vet.lecture();
