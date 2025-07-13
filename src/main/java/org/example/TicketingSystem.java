@@ -1,6 +1,5 @@
 package org.example;
 
-import org.example.buildings.Tickets;
 import java.util.*;
 
 public class TicketingSystem {
