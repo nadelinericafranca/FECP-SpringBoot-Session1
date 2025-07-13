@@ -1,12 +1,9 @@
 package org.example;
 
-import org.example.animals.Animal;
 import org.example.animals.Elephant;
 import org.example.animals.Lion;
-import org.example.animals.Pachyderm;
 import org.example.buildings.Enclosures;
 import org.example.buildings.Hospital;
-import org.example.buildings.Product;
 import org.example.buildings.Shops;
 import org.example.people.Veterinarians;
 
