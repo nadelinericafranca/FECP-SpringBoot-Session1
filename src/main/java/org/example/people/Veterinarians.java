@@ -20,7 +20,6 @@ public class Veterinarians extends People {
     }
 
     public void heal(Animal animal) {
-        System.out.println("Dr. " + name + " begins healing sick animals...");
         animal.setHealthy(true);
         animal.setHealingTimestamp(LocalDateTime.now()); // Set timestamp
     }

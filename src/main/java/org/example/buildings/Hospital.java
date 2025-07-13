@@ -29,13 +29,25 @@ public class Hospital extends Buildings {
         animal.setHealthy(false);
     }
 
-    public void healAnimal(Animal animal, Veterinarians vet) {
-        vet.heal(animal);
-        sickAnimals.remove(animal);
-        healedAnimals.add(animal);
+    public void healSickAnimals(Veterinarians vet) {
+        if (sickAnimals.isEmpty()) {
+            System.out.println("No sick animals to heal.\n");
+            return;
+        }
 
-        System.out.println("✅ Healed: " + animal.getName());
-        System.out.println(animal.getName() + " has been discharged and returned to enclosure");
+        System.out.println("Dr. " + vet.getName() + " begins healing sick animals...");
+
+        ArrayList<Animal> animalsToHeal = new ArrayList<>(sickAnimals); // create copy to avoid conflict during removal of animal to the original list
+
+        for (Animal animal : animalsToHeal) {
+            vet.heal(animal);
+            sickAnimals.remove(animal);
+            healedAnimals.add(animal);
+
+            System.out.println("✅ Healed: " + animal.getName());
+            System.out.println(animal.getName() + " has been discharged and returned to enclosure");
+        }
+        System.out.println();
     }
 
     public void displaySickAnimals() {

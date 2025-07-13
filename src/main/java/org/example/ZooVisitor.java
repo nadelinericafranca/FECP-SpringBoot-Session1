@@ -116,17 +116,10 @@ public class ZooVisitor {
                         vet.lecture();
                         break;
                     case 4:
-                        ArrayList<Animal> sickAnimals = hospital.getSickAnimals();
-                        if (sickAnimals.isEmpty()) {
-                            System.out.println("No sick animals to heal.");
-                        } else {
-                            for (Animal animal : sickAnimals) {
-                                hospital.healAnimal(animal, vet);
-                            }
-                        }
+                        hospital.healSickAnimals(vet);
                         break;
                     case 5:
-                        System.out.println("Exiting Zoo Vet Hospital. Goodbye!");
+                        System.out.println("Exiting Zoo Vet Hospital. Goodbye!\n");
                         break;
                     default:
                         System.out.println("Invalid input. Please choose from the menu.\n");
