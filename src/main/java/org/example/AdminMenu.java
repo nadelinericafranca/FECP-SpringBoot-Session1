@@ -4,6 +4,7 @@ import org.example.people.Handlers;
 import org.example.people.Managers;
 import org.example.people.Vendors;
 import org.example.people.Veterinarians;
+import org.example.animals.*;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -23,10 +24,23 @@ public class AdminMenu {
     private final List<Veterinarians> veterinarians = new ArrayList<>();
 
 
+    // animal list
+    private final List<Animal> animals = new ArrayList<>();
+
+
     public AdminMenu(Scanner scanner) {
         this.scanner = scanner;
         this.ADMIN_USERNAME = "admin";
         this.ADMIN_PASSWORD = "password123";
+
+        // populate animal list for demo
+        animals.add(new Cheetah("Chester", "Cheetah"));
+        animals.add(new Elephant("Elly", "Elephant"));
+        animals.add(new Hippo("Hipster", "Hippo"));
+        animals.add(new Owl("Owly", "Owl"));
+        animals.add(new Parrot("Parry", "Parrot"));
+        animals.add(new Rhino("Rhyan", "Rhino"));
+        animals.add(new Tiger("Tigy", "Tiger"));
     }
 
     // method for other modules to check zooState
@@ -200,7 +214,7 @@ public class AdminMenu {
         while(true){
             System.out.println("\n----- Handler Main Menu ------");
             System.out.println("1. List Handler Assignments \n2. Assign Animal to Handler \n3. Handler Actions \n4. Return to Admin Menu");
-            System.out.println("Choose an Option: ");
+            System.out.print("Choose an Option: ");
 
             int choice;
 
@@ -209,10 +223,177 @@ public class AdminMenu {
 
                 switch(choice){
                     case 1:
+                        // list all handler with assigned animals
+
+                        if(handlers.isEmpty()){
+                            System.out.println("> [ERR: No Handlers Available. Add a Handler first.]");
+                        }else{
+                            for(Handlers handler : handlers){
+
+                                System.out.print("Handler: " + handler.getName() + " | Animals: ") ;
+
+                                if (handler.getAssignedAnimals().isEmpty()){
+                                    System.out.println("None");
+                                }else{
+                                    System.out.println(handler.getAssignedAnimals().stream().map(animals -> animals.getName() + "(" + animals.getSpecies() + ")").collect(Collectors.joining(", ")));
+                                }
+                            }
+                        }
                         break;
                     case 2:
+                        // assign animals to handlers
+
+                        if(handlers.isEmpty()){
+                            System.out.println("> [ERR: No Handlers Available. Add a Handler first.]");
+                            break;
+                        }
+
+                        if(animals.isEmpty()){
+                            System.out.println("> [ERR: No animals available.]");
+                            break;
+                        }
+
+                        System.out.println("--- Handlers List ---");
+                        // print out list of handlers
+                        for (int i = 0; i<handlers.size(); i++){
+                            System.out.println((i+1) + ". " + handlers.get(i).getName());
+                        }
+
+                        System.out.print("Choose a Handler (Number): ");
+
+                        int handlerIndex;
+
+                        try{
+                            handlerIndex = Integer.parseInt(scanner.nextLine()) -1;
+
+                            if(handlerIndex < 0 || handlerIndex >= handlers.size()){
+                                System.out.println("> [ERR: Invalid Input. Chosen Option out of range]");
+                                break;
+                            }
+
+                        } catch (NumberFormatException e) {
+                            System.out.println("> [ERR: Invalid Input. Choice must be a number.]");
+                            break;
+                        }
+
+
+
+                        System.out.println("--- Animals List ---");
+                        for (int i = 0; i < animals.size(); i++){
+                            System.out.println((i+1) + ". " + animals.get(i).getName() + "(" + animals.get(i).getSpecies() + ")");
+                        }
+
+                        System.out.print("Choose an Animal (Number): ");
+
+                        int animalIndex;
+                        try{
+                            animalIndex = Integer.parseInt(scanner.nextLine())-1;
+
+                            if(animalIndex < 0 || animalIndex >= animals.size()){
+                                System.out.println("> [ERR: Invalid Input. Chosen Option out of range]");
+                                break;
+                            }
+
+                        } catch (NumberFormatException e) {
+                            System.out.println("> [ERR: Invalid Input. Choice must be a number.]");
+                            break;
+                        }
+
+                        Handlers selectedHandler = handlers.get(handlerIndex);
+                        Animal selectedAnimal = animals.get(animalIndex);
+
+                        selectedHandler.assignAnimal(selectedAnimal);
+                        System.out.println("> [SUCCESS: " + selectedAnimal.getName()+ " assigned to " + selectedHandler.getName() + "]" );
+
                         break;
                     case 3:
+
+                        // Handler Actions
+                        if(handlers.isEmpty()){
+                            System.out.println("> [ERR: No Handlers Available. Add a Handler first.]");
+                            break;
+                        }
+
+                        System.out.println("--- Handlers List ---");
+                        for (int i = 0; i < handlers.size(); i++) {
+                            System.out.println((i+1) + ". " + handlers.get(i).getName());
+                        }
+
+                        System.out.print("Choose Handler (number): ");
+
+                        int handlerActionIndex = 0;
+
+                        try{
+                            handlerActionIndex = Integer.parseInt(scanner.nextLine()) - 1;
+
+                            if (handlerActionIndex < 0 || handlerActionIndex >= handlers.size()) {
+                                System.out.println("Invalid handler selection.");
+                                break;
+                            }
+
+                        }catch(NumberFormatException e){
+                            System.out.println("> [ERR: Invalid Input. Chosen Option must be a number]");
+                        }
+
+                        Handlers actionHandler = handlers.get(handlerActionIndex);
+
+                        if (actionHandler.getAssignedAnimals().isEmpty()) {
+                            System.out.println("This handler has no assigned animals.");
+                            break;
+                        }
+
+
+                        System.out.println("--- Assigned Animals List ---");
+                        List<Animal> assigned = actionHandler.getAssignedAnimals();
+                        for (int i = 0; i < assigned.size(); i++) {
+                            System.out.println((i+1) + ". " + assigned.get(i).getName() + " (" + assigned.get(i).getSpecies() + ")");
+                        }
+
+                        System.out.print("Choose an Animal (number): ");
+                        int animalsActionIndex = 0;
+                        try{
+                            animalsActionIndex = Integer.parseInt(scanner.nextLine()) - 1;
+                            if (animalsActionIndex < 0 || animalsActionIndex >= assigned.size()) {
+                                System.out.println("Invalid animal selection.");
+                                break;
+                            }
+                        }catch(NumberFormatException e){
+                            System.out.println("> [ERR: Invalid Input. Chosen Opetion must be a number]");
+                        }
+
+
+                        Animal actionAnimal = assigned.get(animalsActionIndex);
+
+                        System.out.println("--- Handler Actions ---");
+                        System.out.println("1. Feed \n2. Exercise \n3. Examine");
+                        System.out.print("Choose Action (number): ");
+
+                        int actionChoice;
+
+                        try{
+                            actionChoice = Integer.parseInt(scanner.nextLine());
+
+                            switch (actionChoice) {
+                                case 1:
+                                    actionAnimal.eat();
+                                    System.out.println("> [" + actionAnimal.getName() + " has been fed]");
+                                    break;
+                                case 2:
+                                    actionAnimal.roam();
+                                    System.out.println("> [" + actionAnimal.getName() + " has exercised]");
+                                    break;
+                                case 3:
+                                    actionAnimal.makeSound();
+                                    System.out.println( "> [" + actionAnimal.getName() + " has been examined (made sound)." + "]");
+                                    break;
+                                default:
+                                    System.out.println("Invalid action.");
+                            }
+
+
+                        }catch(NumberFormatException e){
+                            System.out.println("> [ERR: Invalid Input. Chosen Option must be a number]");
+                        }
                         break;
                     case 4:
                         System.out.println("----- Going Back to Admin Menu! -----");
