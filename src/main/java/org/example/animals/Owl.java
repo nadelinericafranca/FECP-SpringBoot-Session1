@@ -1,8 +1,8 @@
 package org.example.animals;
 
 public class Owl extends Bird {
-    public Owl() {
-        this.name = "Owl";
+    public Owl(String name, String species) {
+        super(name, species);
     }
 
     @Override
@@ -18,9 +18,5 @@ public class Owl extends Bird {
     @Override
     public void makeSound() {
         System.out.println("Owl hoots! 🦉");
-    }
-
-    public String getName() {
-        return name;
     }
 }

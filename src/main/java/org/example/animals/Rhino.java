@@ -1,8 +1,10 @@
 package org.example.animals;
 
 public class Rhino extends Pachyderm {
-    public Rhino() {
         this.name = "Rhino";
+=======
+    public Rhino(String name, String species) {
+        super(name, species);
     }
 
     @Override
@@ -17,10 +19,9 @@ public class Rhino extends Pachyderm {
 
     @Override
     public void makeSound() {
-
+      
     }
-
-    public String getName() {
+    public tring getName() {
         return name;
     }
 }
