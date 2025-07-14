@@ -1,6 +1,6 @@
 package org.example;
 
-import org.example.animals.Animal;
+import org.example.animals.*;
 import org.example.buildings.Enclosures;
 import org.example.buildings.Hospital;
 import org.example.buildings.Product;
@@ -18,9 +18,13 @@ public class ZooVisitor {
         this.scanner = scanner; // Initialize with the shared scanner
         this.enclosures = new ArrayList<Enclosures>();
 
-        Enclosures pachydermEnclosure = new Enclosures("Pachyderm", "Elephant");
-        Enclosures felineEnclosure = new Enclosures("Feline", "Tiger");
-        Enclosures birdEnclosure = new Enclosures("Bird", "Owl");
+        Animal elephant = new Elephant();
+        Animal tiger = new Tiger();
+        Animal owl = new Owl();
+
+        Enclosures pachydermEnclosure = new Enclosures("Pachyderm", elephant);
+        Enclosures felineEnclosure = new Enclosures("Feline", tiger);
+        Enclosures birdEnclosure = new Enclosures("Bird", owl);
 
         this.enclosures.add(pachydermEnclosure);
         this.enclosures.add(felineEnclosure);
@@ -43,34 +47,29 @@ public class ZooVisitor {
             return; // Exit if input is not a number
         }
 
-        String animal;
-        String animalSound;
+        Enclosures selectedEnclosure;
 
-        // TODO: Implement makeSound() for each of the animals
         switch(option) {
             case 1:
-                animal = "Elephant";
-                animalSound = "trumpets";
+                selectedEnclosure = enclosures.getFirst();
                 break;
             case 2:
-                animal = "Lion";
-                animalSound = "roars";
+                selectedEnclosure = enclosures.get(1);
                 break;
             case 3:
-                animal = "Owl";
-                animalSound = "hoots";
+                selectedEnclosure = enclosures.get(2);
                 break;
             default: // Handle invalid numbers
                 System.out.println("Invalid option. Returning to the previous menu.\n");
                 return; // Exit the method
         }
 
-        System.out.print("Would you like to feed the " + animal + "? (yes/no): ");
+        System.out.print("Would you like to feed the " + selectedEnclosure.getAnimal().getName() + "? (yes/no): ");
         String willFeed = scanner.nextLine();
 
         if (willFeed.equalsIgnoreCase("yes")) {
-            System.out.println(animal + " is eating.");
-            System.out.println(animal + " " + animalSound + "!");
+            selectedEnclosure.getAnimal().eat();
+            selectedEnclosure.getAnimal().makeSound();
         }
         System.out.println(); // Add a newline for better spacing
     }
