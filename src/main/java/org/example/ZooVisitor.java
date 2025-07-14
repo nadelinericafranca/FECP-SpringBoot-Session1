@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.animals.*;
 import org.example.buildings.Enclosures;
 import java.util.*;
 
@@ -13,9 +14,13 @@ public class ZooVisitor {
         this.scanner = scanner; // Initialize with the shared scanner
         this.enclosures = new ArrayList<Enclosures>();
 
-        Enclosures pachydermEnclosure = new Enclosures("Pachyderm", "Elephant");
-        Enclosures felineEnclosure = new Enclosures("Feline", "Tiger");
-        Enclosures birdEnclosure = new Enclosures("Bird", "Owl");
+        Animal elephant = new Elephant();
+        Animal tiger = new Tiger();
+        Animal owl = new Owl();
+
+        Enclosures pachydermEnclosure = new Enclosures("Pachyderm", elephant);
+        Enclosures felineEnclosure = new Enclosures("Feline", tiger);
+        Enclosures birdEnclosure = new Enclosures("Bird", owl);
 
         this.enclosures.add(pachydermEnclosure);
         this.enclosures.add(felineEnclosure);
@@ -41,7 +46,6 @@ public class ZooVisitor {
         String animal;
         String animalSound;
 
-        // TODO: Implement makeSound() for each of the animals
         switch(option) {
             case 1:
                 animal = "Elephant";

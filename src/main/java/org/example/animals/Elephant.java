@@ -1,6 +1,12 @@
 package org.example.animals;
 
 public class Elephant extends Pachyderm {
+    private final String name;
+
+    public Elephant() {
+        this.name = "Elephant";
+    }
+
     @Override
     public void eat() {
         System.out.println("Elephant is eating.");
@@ -14,5 +20,9 @@ public class Elephant extends Pachyderm {
     @Override
     public void makeSound() {
         System.out.println("Elephant trumpets. 🐘🎺");
+    }
+
+    public String getName() {
+        return name;
     }
 }
