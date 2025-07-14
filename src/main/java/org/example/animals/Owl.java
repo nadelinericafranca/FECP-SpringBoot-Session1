@@ -1,8 +1,6 @@
 package org.example.animals;
 
 public class Owl extends Bird {
-    private final String name;
-
     public Owl() {
         this.name = "Owl";
     }
