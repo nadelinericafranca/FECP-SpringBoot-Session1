@@ -125,6 +125,16 @@ public class ZooVisitor {
     }
 
     public void displayMenu() {
+        System.out.print("Enter ticket code: ");
+        String codeToCheck = scanner.nextLine();
+        System.out.println();
+        boolean doesTicketExist = checkForTicket(codeToCheck);
+
+        if (!doesTicketExist){
+            System.out.println("Please buy a ticket first.");
+            return;
+        }
+
         System.out.println("What would you like to do?");
 
         while (true) {
@@ -162,5 +172,15 @@ public class ZooVisitor {
                 System.out.println("Invalid input. Please choose from the menu.\n");
             }
         }
+    }
+
+    public boolean checkForTicket(String codeToCheck) {
+        for(Ticket ticket: TicketingSystem.purchasedTickets) {
+            if(ticket.code.equals(codeToCheck)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
