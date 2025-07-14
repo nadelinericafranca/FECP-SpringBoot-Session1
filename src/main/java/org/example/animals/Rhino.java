@@ -21,7 +21,7 @@ public class Rhino extends Pachyderm {
     public void makeSound() {
       
     }
-    public tring getName() {
+    public String getName() {
         return name;
     }
 }
