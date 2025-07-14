@@ -1,8 +1,6 @@
 package org.example.animals;
 
 public class Rhino extends Pachyderm {
-        this.name = "Rhino";
-=======
     public Rhino(String name, String species) {
         super(name, species);
     }
