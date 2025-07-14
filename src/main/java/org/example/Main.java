@@ -12,6 +12,9 @@ public class Main {
     ArrayList<Buildings> buildings = new ArrayList<>();
 
     static Scanner scanner = new Scanner(System.in);
+    static AdminMenu adminMenu = new AdminMenu(scanner);
+    static TicketingSystem ticketingSystem = new TicketingSystem(scanner);
+    static ZooVisitor zooVisitor = new ZooVisitor(scanner);
 
     public static void main(String[] args) {
         while (true) {
@@ -29,23 +32,30 @@ public class Main {
 
                 switch (option) {
                     case 1:
-                        AdminMenu adminMenu = new AdminMenu(scanner);
                         adminMenu.displayMenu();
                         break;
                     case 2:
-                        TicketingSystem ticketingSystem = new TicketingSystem(scanner);
-                        ticketingSystem.displayMenu();
+                        if (adminMenu.isZooOpen()) {
+                            ticketingSystem.displayMenu();
+                            break;
+                        }
+                        System.out.println("The zoo is still closed. Please go to the admin menu to open the zoo.");
+                        System.out.println();
                         break;
                     case 3:
-                        // TODO: Implement open/closing
-                        ZooVisitor zooVisitor = new ZooVisitor(scanner);
-                        zooVisitor.displayMenu();
+                        if (adminMenu.isZooOpen()) {
+                            zooVisitor.displayMenu();
+                            break;
+                        }
+                        System.out.println("The zoo is still closed. Please go to the admin menu to open the zoo.");
+                        System.out.println();
                         break;
                     case 4:
                         System.out.println("--- Thank you! ---");
                         System.exit(0);
                     default:
                         System.out.println("Invalid input. Please choose from the menu.\n");
+                        System.out.println();
                         break;
                 }
             } catch (NumberFormatException e) {

@@ -1,7 +1,7 @@
 package org.example.animals;
 
-public class Rhino extends Pachyderm {
-    public Rhino(String name, String species) {
+public class Lion extends Feline {
+    public Lion(String name, String species) {
         super(name, species);
     }
 
@@ -17,6 +17,6 @@ public class Rhino extends Pachyderm {
 
     @Override
     public void makeSound() {
-      
+
     }
 }
