@@ -12,6 +12,9 @@ public class Main {
     ArrayList<Buildings> buildings = new ArrayList<>();
 
     static Scanner scanner = new Scanner(System.in);
+    static AdminMenu adminMenu = new AdminMenu(scanner);
+    static TicketingSystem ticketingSystem = new TicketingSystem(scanner);
+    static ZooVisitor zooVisitor = new ZooVisitor(scanner);
 
     public static void main(String[] args) {
         while (true) {
@@ -29,16 +32,13 @@ public class Main {
 
                 switch (option) {
                     case 1:
-                        AdminMenu adminMenu = new AdminMenu(scanner);
                         adminMenu.displayMenu();
                         break;
                     case 2:
-                        TicketingSystem ticketingSystem = new TicketingSystem(scanner);
                         ticketingSystem.displayMenu();
                         break;
                     case 3:
                         // TODO: Implement open/closing
-                        ZooVisitor zooVisitor = new ZooVisitor(scanner);
                         zooVisitor.displayMenu();
                         break;
                     case 4:
