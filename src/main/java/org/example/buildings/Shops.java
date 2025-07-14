@@ -12,9 +12,6 @@ public class Shops extends Buildings {
         products.add(new Gifts(4, "Keychain", 45));
 
     }
-    private String name;
-    private int price;
-    private String type;
 
     public void startShopping(Scanner scanner) {
         ArrayList<Product> selectedProducts = new ArrayList<>();
