@@ -1,6 +1,10 @@
 package org.example.animals;
 
 public class Parrot extends Bird {
+    public Parrot() {
+        this.name = "Parrot";
+    }
+
     @Override
     public void eat() {
 
@@ -14,5 +18,9 @@ public class Parrot extends Bird {
     @Override
     public void makeSound() {
 
+    }
+
+    public String getName() {
+        return name;
     }
 }

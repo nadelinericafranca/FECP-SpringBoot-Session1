@@ -43,33 +43,29 @@ public class ZooVisitor {
             return; // Exit if input is not a number
         }
 
-        String animal;
-        String animalSound;
+        Enclosures selectedEnclosure;
 
         switch(option) {
             case 1:
-                animal = "Elephant";
-                animalSound = "trumpets";
+                selectedEnclosure = enclosures.getFirst();
                 break;
             case 2:
-                animal = "Lion";
-                animalSound = "roars";
+                selectedEnclosure = enclosures.get(1);
                 break;
             case 3:
-                animal = "Owl";
-                animalSound = "hoots";
+                selectedEnclosure = enclosures.get(2);
                 break;
             default: // Handle invalid numbers
                 System.out.println("Invalid option. Returning to the previous menu.\n");
                 return; // Exit the method
         }
 
-        System.out.print("Would you like to feed the " + animal + "? (yes/no): ");
+        System.out.print("Would you like to feed the " + selectedEnclosure.getAnimal().getName() + "? (yes/no): ");
         String willFeed = scanner.nextLine();
 
         if (willFeed.equalsIgnoreCase("yes")) {
-            System.out.println(animal + " is eating.");
-            System.out.println(animal + " " + animalSound + "!");
+            selectedEnclosure.getAnimal().eat();
+            selectedEnclosure.getAnimal().makeSound();
         }
         System.out.println(); // Add a newline for better spacing
     }
