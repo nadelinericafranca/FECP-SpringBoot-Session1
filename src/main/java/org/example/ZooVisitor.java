@@ -16,9 +16,9 @@ public class ZooVisitor {
         this.scanner = scanner; // Initialize with the shared scanner
         this.enclosures = new ArrayList<Enclosures>();
 
-        Animal elephant = new Elephant();
-        Animal tiger = new Tiger();
-        Animal owl = new Owl();
+        Animal elephant = new Elephant("Elephant", "Pachyderm");
+        Animal tiger = new Tiger("Tiger", "Feline");
+        Animal owl = new Owl("Owl", "Bird");
 
         Enclosures pachydermEnclosure = new Enclosures("Pachyderm", elephant);
         Enclosures felineEnclosure = new Enclosures("Feline", tiger);
