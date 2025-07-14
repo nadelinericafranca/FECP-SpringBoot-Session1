@@ -38,8 +38,11 @@ public class Main {
                         ticketingSystem.displayMenu();
                         break;
                     case 3:
-                        // TODO: Implement open/closing
-                        zooVisitor.displayMenu();
+                        if (adminMenu.isZooOpen()) {
+                            zooVisitor.displayMenu();
+                            break;
+                        }
+                        System.out.println("The zoo is still closed. Please go to the admin menu to open the zoo.");
                         break;
                     case 4:
                         System.out.println("--- Thank you! ---");
